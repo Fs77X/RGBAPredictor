@@ -16,13 +16,6 @@ function setup() {
   intro.style('font-family', 'Livvic', 'sans-serif');
   intro.style('margin-bottom', '50px');
   intro.class('no-copy');
-  // let input = createFileInput(function(){
-  //   handleFiles(this.files);
-  // });
-  // input.style('display', 'flex');
-  // input.position(750, 260);
-  // input.style('justify-content', 'center');
-  // input.style('align-self', 'center');
 
   createCanvas(1280, 500);
   background('rgba(0, 0, 0, 0.05)');
@@ -43,18 +36,12 @@ function setup() {
 
 
   // loadFont(urlF, succ(), ugh());
-  trainPredictor();
+  // trainPredictor();
   pickColor();
 
   // body.style.background = 'linear-gradient(to right, black , yellow)';
 }
 
-// function succ() {
-//   console.log("Succ!");
-// }
-// function ugh() {
-//   console.log("yikes");
-// }
 
 
 function mousePressed() {
@@ -99,6 +86,8 @@ function outside() {
   this.style('background-color', 'rgba(76, 175, 80, 50)');
 }
 
+
+//predicts which color is best with the information given to the Neural network
 function colorPredictor(r, g, b, r1, b1, g1) {
   inputs = [Math.round(r) / 255, Math.round(g) / 255, Math.round(b) / 255, Math.round(r1) / 255, Math.round(g1) / 255, Math.round(b1) / 255];
   let outputs = brain.predict(inputs);
@@ -115,8 +104,10 @@ function colorPredictor(r, g, b, r1, b1, g1) {
 
 }
 
+
+//trains using predetermined logic
 function trainPredictor() {
-  // eslint-disable-next-line no-constant-condition
+  
   for (let i = 0; i < 10000; i++) {
     r = random(255);
     g = random(255);
@@ -141,7 +132,44 @@ function trainPredictor() {
 
 }
 
+//trains using data created from trainer page
+function trainData(tData) {
+  let result;
+  for (let i = 1; i < tData.length - 1; i++) {
+    inputs = [tData[i][0], tData[i][1], tData[i][2], tData[i][3], tData[i][4], tData[i][5]];
+    console.log(inputs);
+    let output = tData[i][6];
+    console.log(output);
+    switch (output) {
+      case 0:
+        result = [1, 0, 0, 0];
+        brain.train(inputs, result);
+        break;
+      case 1:
+        result = [0, 1, 0, 0];
+        brain.train(inputs, result);
+        break;
+      case 2:
+        result = [0, 0, 1, 0];
+        brain.train(inputs, result);
+        break;
+      case 3:
+        result = [0, 0, 0, 1];
+        brain.train(inputs, result);
+        break;
+      default:
+        break;
 
+    }
+
+
+  }
+
+}
+
+
+
+//draws circle of what the computer thinks is the answer
 function drawPicked() {
   if (which === 0) {
     fill(0);
@@ -166,6 +194,8 @@ function drawPicked() {
   }
 
 }
+
+
 
 function draw() {
   // noLoop();
