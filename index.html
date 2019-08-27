@@ -14,13 +14,22 @@
     <h1 class="no-copy">Welcome to the Predictor page!</h1>
     <h2 class="no-copy">Current Background</h2>
     <h3 class="no-copy"></h3>
-    <input type="file" id="csvFileInput" class = "button" onchange="handleFiles(this.files)" </input> 
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"
+    <p class="textEnter">Hello, please upload the CSV file you've recieved from the trainer or click on Train to test
+        the neural network with pre-determined logic!</p>
+    <div class="container">
+        <input type="file" id="csvFileInput"  onchange="handleFiles(this.files)" </input> 
+        <button class="button no-copy" onclick="trainPredictor()">Test without data!</button>
+        <button class="button no-copy" onclick="downloadData()">Save model!</button>
+
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"
         integrity="sha256-nd3JLOQlNGixlXNjD4rPEwBNtIXCcsPW7jQW2C8HM/w=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"
         integrity="sha256-Ut3ZLQZPuouR6WGRemPdFEwh86ajX+X3N16CEWlUWNM=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="lib/read-csv.js"></script>
+    <script type="text/javascript" src="lib/downloadCSV.js"></script>
     <script type="text/javascript" src="lib/hoverText.js"></script>
     <script type="text/javascript" src="lib/nn.js"></script>
     <script type="text/javascript" src="lib/matrix.js"></script>

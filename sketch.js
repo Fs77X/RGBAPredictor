@@ -1,6 +1,6 @@
 let r, g, b, r1, g1, b1;
 // let body = document.getElementById("grad");
-// let data = [];
+let data = [];
 let css = document.querySelector("h3");
 
 let body = document.getElementById("grad");
@@ -12,10 +12,10 @@ let inputs;
 
 function setup() {
   brain = new NeuralNetwork(6, 6, 4);
-  let intro = createP("Hello, please upload the CSV file you've recieved from the trainer. This neural network will be trained using your data and is capable of supervised learning!");
-  intro.style('font-family', 'Livvic', 'sans-serif');
-  intro.style('margin-bottom', '50px');
-  intro.class('no-copy');
+  // let intro = createP("Hello, please upload the CSV file you've recieved from the trainer or click on Train to test the neural network with pre-determined logic!");
+  // intro.style('font-family', 'Livvic', 'sans-serif');
+  // intro.style('margin-bottom', '50px');
+  // intro.class('no-copy');
 
   createCanvas(1280, 500);
   background('rgba(0, 0, 0, 0.05)');
@@ -35,21 +35,19 @@ function setup() {
 
 
 
-  // loadFont(urlF, succ(), ugh());
-  // trainPredictor();
   pickColor();
 
-  // body.style.background = 'linear-gradient(to right, black , yellow)';
+
 }
 
 
 
 function mousePressed() {
-  inputs = [Math.round(r) / 255, Math.round(g) / 255, Math.round(b) / 255, Math.round(r1) / 255, Math.round(g1) / 255, Math.round(b1) / 255];
-  black.clicked(mouseX, inputs);
-  white.clicked(mouseX, inputs);
-  ba.clicked(mouseX, inputs);
-  wa.clicked(mouseX, inputs);
+  inputs = [Math.round(r), Math.round(g), Math.round(b), Math.round(r1), Math.round(g1), Math.round(b1)];
+  black.clicked(mouseX, data, inputs);
+  white.clicked(mouseX, data, inputs);
+  ba.clicked(mouseX, data, inputs);
+  wa.clicked(mouseX, data, inputs);
   pickColor();
 
 }
@@ -72,11 +70,7 @@ function pickColor() {
 
 }
 
-function createNN(freshData) {
-  data = freshData;
-  console.log(data.length);
 
-}
 
 function onTop() {
   this.style('background-color', 'rgb(255,255,255)');
@@ -135,6 +129,8 @@ function trainPredictor() {
 //trains using data created from trainer page
 function trainData(tData) {
   let result;
+  data = tData;
+  data.pop();
   for (let i = 1; i < tData.length - 1; i++) {
     inputs = [tData[i][0], tData[i][1], tData[i][2], tData[i][3], tData[i][4], tData[i][5]];
     console.log(inputs);
@@ -167,6 +163,10 @@ function trainData(tData) {
 
 }
 
+
+function downloadData(){
+  download_csv(data);
+}
 
 
 //draws circle of what the computer thinks is the answer
