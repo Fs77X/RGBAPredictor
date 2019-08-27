@@ -2,24 +2,30 @@
 <html>
 
 <head>
-    <title>Training Page</title>
+    <title>Predictor Page</title>
     <link href="https://fonts.googleapis.com/css?family=Livvic|Pacifico&display=swap" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/css?family=Livvic&display=swap" rel="stylesheet"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Cedarville+Cursive' rel='stylesheet' type='text/css'> -->
     <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css" integrity="sha256-ujE/ZUB6CMZmyJSgQjXGCF4sRRneOimQplBVLu8OU5w=" crossorigin="anonymous" /> -->
 </head>
 
-<body id = "grad">
-    <h1 class = "no-copy">Welcome to the training page!</h1>
-    <h2 class = "no-copy">Current Background</h2>
-    <h3 class = "no-copy"></h3>
+<body id="grad">
+    <h1 class="no-copy">Welcome to the Predictor page!</h1>
+    <h2 class="no-copy">Current Background</h2>
+    <h3 class="no-copy"></h3>
+    <input type="file" id="csvFileInput" class = "button" onchange="handleFiles(this.files)" </input> 
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"
+        integrity="sha256-nd3JLOQlNGixlXNjD4rPEwBNtIXCcsPW7jQW2C8HM/w=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"
+        integrity="sha256-Ut3ZLQZPuouR6WGRemPdFEwh86ajX+X3N16CEWlUWNM=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="lib/read-csv.js"></script>
+    <script type="text/javascript" src="lib/hoverText.js"></script>
+    <script type="text/javascript" src="lib/nn.js"></script>
+    <script type="text/javascript" src="lib/matrix.js"></script>
+    <script type="text/javascript" src="sketch.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js" integrity="sha256-nd3JLOQlNGixlXNjD4rPEwBNtIXCcsPW7jQW2C8HM/w=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js" integrity="sha256-Ut3ZLQZPuouR6WGRemPdFEwh86ajX+X3N16CEWlUWNM=" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src="lib/downloadCSV.js"></script>
-    <script type = "text/javascript" src="lib/hoverText.js"></script>
-    <script type = "text/javascript" src="sketch.js"></script>
-    
 </body>
 
 </html>
